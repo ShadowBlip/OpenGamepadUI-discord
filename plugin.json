@@ -1,14 +1,14 @@
 {
-  "plugin.id": "template",
-  "plugin.name": "Template Plugin",
+  "plugin.id": "discord",
+  "plugin.name": "Discord",
   "plugin.version": "1.0.0",
   "plugin.min-api-version": "1.0.0",
-  "plugin.link": "",
-  "plugin.source": "",
-  "plugin.description": "",
+  "plugin.link": "https://github.com/ShadowBlip/OpenGamepadUI-discord",
+  "plugin.source": "https://github.com/ShadowBlip/OpenGamepadUI-discord",
+  "plugin.description": "Discord integration with OpenGamepadUI",
   "store.tags": [],
   "store.images": [],
-  "author.name": "First Last",
-  "author.email": "person@example.com",
+  "author.name": "William Edwards",
+  "author.email": "shadowapex@gmail.com",
   "entrypoint": "plugin.gd"
 }

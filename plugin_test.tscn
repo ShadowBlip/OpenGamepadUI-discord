@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dp80ftcj4omal"]
+
+[ext_resource type="Script" path="res://plugins/discord/plugin.gd" id="1_56ny7"]
+[ext_resource type="PackedScene" uid="uid://csfs4x7qyshrj" path="res://plugins/discord.bak/core/overlay.tscn" id="2_vmyoo"]
+
+[node name="plugin_test" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Node" type="Node" parent="."]
+script = ExtResource("1_56ny7")
+
+[node name="Overlay" parent="." instance=ExtResource("2_vmyoo")]
+layout_mode = 1
