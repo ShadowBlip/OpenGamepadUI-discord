@@ -2,6 +2,8 @@ extends Control
 
 @export var texture: Texture2D
 @export var text: String
+@export var normal_frame_color := Color(0.1, 0.1, 0.1)
+@export var talking_frame_color := Color(0.31, 0.98, 0.48)
 
 @onready var panel := $%PanelContainer as PanelContainer
 @onready var avatar := $%TextureRect as TextureRect
@@ -12,14 +14,17 @@ extends Control
 func _ready() -> void:
 	avatar.texture = texture
 	label.text = text
-	set_frame_color(Color(0, 0, 0))
+	set_frame_color(normal_frame_color)
 
 
 func set_frame_color(color: Color) -> void:
-	#theme_override_styles/panel
-	var box := panel.get_theme_stylebox("panel")
-	#panel.add_theme_color_override("font_color", Color(1, 0.5, 0))
-	panel.add_theme_color_override("font_color", Color(1, 0.5, 0))
+	var panel_style = panel.get("theme_override_styles/panel")
+	panel_style.set("border_color", color)
 
-	print(box)
-	panel.theme.set_color("border_color", "PanelContainer", color)
+
+func set_talking(is_talking: bool) -> void:
+	if is_talking:
+		set_frame_color(talking_frame_color)
+		return
+	
+	set_frame_color(normal_frame_color)

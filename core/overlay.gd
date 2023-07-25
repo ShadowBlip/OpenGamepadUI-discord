@@ -29,6 +29,7 @@ func _ready() -> void:
 	discord.voice_state_deleted.connect(_on_voice_state_deleted)
 	discord.speaking_started.connect(_on_speaking_started)
 	discord.speaking_stopped.connect(_on_speaking_stopped)
+	logger.debug("Overlay ready")
 
 
 # Update all the voice banners
@@ -148,10 +149,21 @@ func _on_speaking_started(speaker: Dictionary) -> void:
 		return
 	
 	var banner := voice_banners_by_user[user_id] as VoiceBanner
+	banner.set_talking(true)
 
 
 func _on_speaking_stopped(speaker: Dictionary) -> void:
-	pass
+	var user_id := "0"
+	if "user_id" in speaker and speaker["user_id"] is String:
+		user_id = speaker["user_id"]
+
+	# Lookup the banner to update
+	if not user_id in voice_banners_by_user:
+		logger.warn("Unable to find voice banner for user: " + user_id)
+		return
+	
+	var banner := voice_banners_by_user[user_id] as VoiceBanner
+	banner.set_talking(false)
 
 
 func _get_user(user_id: String) -> Dictionary:
