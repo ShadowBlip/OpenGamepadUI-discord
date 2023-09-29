@@ -12,7 +12,7 @@ make install
 
 ## Roadmap
 
-[x] Show voice channel overlay
-[ ] Quick access menu for managing mute/deaf
-[ ] Quick access menu for changing voice channels
-[ ] Option to subscribe to text channel messages
+- [x] Show voice channel overlay
+- [ ] Quick access menu for managing mute/deaf
+- [ ] Quick access menu for changing voice channels
+- [ ] Option to subscribe to text channel messages
