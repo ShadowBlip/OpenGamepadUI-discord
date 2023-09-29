@@ -1,4 +1,4 @@
-extends Control
+extends OverlayProvider
 
 const Discord := preload("res://plugins/discord/core/discord_client.gd")
 const VoiceBanner := preload("res://plugins/discord/core/voice_user_banner.gd")
@@ -10,7 +10,6 @@ var users := {}
 var voice_banners: Array[VoiceBanner]
 var voice_banners_by_user: Dictionary = {}
 var mutex := Mutex.new()
-var logger := Log.get_logger("DiscordOverlay", Log.LEVEL.DEBUG)
 
 @onready var discord: Discord = get_tree().get_first_node_in_group("discord_client")
 @onready var container := $%VoiceContainer
@@ -18,6 +17,7 @@ var logger := Log.get_logger("DiscordOverlay", Log.LEVEL.DEBUG)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	logger = Log.get_logger("DiscordOverlay", Log.LEVEL.DEBUG)
 	if not discord:
 		logger.error("Unable to find discord client node!")
 		return
