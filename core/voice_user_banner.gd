@@ -1,5 +1,7 @@
 extends Control
 
+signal removed
+
 @export var texture: Texture2D
 @export var text: String
 @export var normal_frame_color := Color(0.1, 0.1, 0.1)
@@ -8,6 +10,7 @@ extends Control
 @onready var panel := $%PanelContainer as PanelContainer
 @onready var avatar := $%TextureRect as TextureRect
 @onready var label := $%Label as Label
+@onready var fade_effect := $FadeEffect as FadeEffect
 
 
 # Called when the node enters the scene tree for the first time.
@@ -28,3 +31,9 @@ func set_talking(is_talking: bool) -> void:
 		return
 	
 	set_frame_color(normal_frame_color)
+
+
+func remove() -> void:
+	removed.emit()
+	await fade_effect.fade_out_finished
+	queue_free()

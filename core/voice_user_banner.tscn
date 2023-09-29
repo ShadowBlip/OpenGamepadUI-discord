@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://citrb8rw5bcyq"]
+[gd_scene load_steps=5 format=3 uid="uid://citrb8rw5bcyq"]
 
 [ext_resource type="Script" path="res://plugins/discord/core/voice_user_banner.gd" id="1_3137d"]
+[ext_resource type="PackedScene" uid="uid://bw8113ocotx2r" path="res://core/systems/effects/fade_effect.tscn" id="2_xt135"]
+[ext_resource type="PackedScene" uid="uid://ekhjpmat02f8" path="res://core/systems/effects/slide_effect.tscn" id="3_2ckcg"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_poj3f"]
 bg_color = Color(0.0784314, 0.0784314, 0.0784314, 0)
@@ -17,6 +19,22 @@ corner_radius_bottom_left = 5
 offset_right = 132.0
 offset_bottom = 48.0
 script = ExtResource("1_3137d")
+
+[node name="FadeEffect" parent="." node_paths=PackedStringArray("target") instance=ExtResource("2_xt135")]
+target = NodePath("..")
+fade_speed = 0.2
+on_signal = "ready"
+fade_out_signal = "removed"
+on_signal = "ready"
+
+[node name="SlideEffect" parent="." node_paths=PackedStringArray("target") instance=ExtResource("3_2ckcg")]
+target = NodePath("../HBoxContainer")
+slide_speed = 0.2
+margin = 40
+direction = "down"
+on_signal = "ready"
+slide_out_signal = "removed"
+on_signal = "ready"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2

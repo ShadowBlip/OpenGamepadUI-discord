@@ -72,7 +72,7 @@ func update_voice_banners() -> void:
 	
 	for banner in to_remove:
 		voice_banners.erase(banner)
-		banner.queue_free()
+		banner.remove()
 	
 	# Create banners for new users
 	for user in current_voice_users:
